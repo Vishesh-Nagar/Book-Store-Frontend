@@ -14,41 +14,42 @@ const EditBook = () => {
     const { id } = useParams();
     const { enqueueSnackbar } = useSnackbar();
 
-    useEffect(() => {
-        setLoading(true);
-        axios.get(`https://book-store-backend-3.onrender.com/books/${id}`)
-            .then((response) => {
-                setAuthor(response.data.author);
-                setPublishYear(response.data.publishYear)
-                setTitle(response.data.title)
-                setLoading(false);
-            }).catch((error) => {
-                setLoading(false);
-                alert('An error happened. Please Chack console');
-                console.log(error);
-            });
-    }, [])
-
-    const handleEditBook = () => {
-        const data = {
-            title,
-            author,
-            publishYear,
-        };
-        setLoading(true);
-        axios
-            .put(`http://localhost:5555/books/${id}`, data)
-            .then(() => {
-                setLoading(false);
-                enqueueSnackbar('Book Edited successfully', { variant: 'success' });
-                navigate('/');
-            })
-            .catch((error) => {
-                setLoading(false);
-                enqueueSnackbar('Error', { variant: 'error' });
-                console.log(error);
-            });
+  useEffect(() => {
+    setLoading(true);
+    axios.get(`https://book-store-backend-3.onrender.com/books/${id}`)
+    .then((response) => {
+        setAuthor(response.data.author);
+        setPublishYear(response.data.publishYear)
+        setTitle(response.data.title)
+        setLoading(false);
+      }).catch((error) => {
+        setLoading(false);
+        alert('An error happened. Please Chack console');
+        console.log(error);
+      });
+  }, [])
+  
+  const handleEditBook = () => {
+    const data = {
+      title,
+      author,
+      publishYear,
     };
+    setLoading(true);
+    axios
+      .put(`https://book-store-backend-3.onrender.com/books/${id}`, data)
+      .then(() => {
+        setLoading(false);
+        enqueueSnackbar('Book Edited successfully', { variant: 'success' });
+        navigate('/');
+      })
+      .catch((error) => {
+        setLoading(false);
+        // alert('An error happened. Please Chack console');
+        enqueueSnackbar('Error', { variant: 'error' });
+        console.log(error);
+      });
+  };
 
     return (
         <div className='p-4'>

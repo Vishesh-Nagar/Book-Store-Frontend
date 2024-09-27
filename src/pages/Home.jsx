@@ -13,19 +13,19 @@ const Home = () => {
     const [loading, setLoading] = useState(false);
     const [showType, setShowType] = useState('table');
 
-    useEffect(() => {
-        setLoading(true);
-        axios
-            .get('https://book-store-backend-3.onrender.com/books')
-            .then((response) => {
-                setBooks(response.data.data);
-                setLoading(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setLoading(false);
-            });
-    }, []);
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get('https://book-store-backend-3.onrender.com/books')
+      .then((response) => {
+        setBooks(response.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }, []);
 
     return (
         <div className='p-4'>
