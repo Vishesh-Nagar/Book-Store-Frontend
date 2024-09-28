@@ -17,14 +17,14 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios.get(`https://book-store-backend-3.onrender.com/books/${id}`)
-    .then((response) => {
-        setAuthor(response.data.author);
-        setPublishYear(response.data.publishYear)
-        setTitle(response.data.title)
+    .then((res) => {
+        setAuthor(res.data.author);
+        setPublishYear(res.data.publishYear)
+        setTitle(res.data.title)
         setLoading(false);
       }).catch((error) => {
         setLoading(false);
-        alert('An error happened. Please Chack console');
+        alert('An error happened. Please Check console');
         console.log(error);
       });
   }, [])
