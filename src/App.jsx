@@ -1,21 +1,31 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import CreateBook from './pages/CreateBooks';
-import ShowBook from './pages/ShowBook';
-import EditBook from './pages/EditBook';
-import DeleteBook from './pages/DeleteBook';
+import React from "react";
+import Home from "./home/Home";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Courses from "./courses/Courses";
+import Signup from "./components/Signup";
+import { Toaster } from "react-hot-toast";
+import { useAuth } from "./context/AuthProvider";
 
-const App = () => {
+function App() {
+    const [authUser, setAuthUser] = useAuth();
+    console.log(authUser);
     return (
-        <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/books/create' element={<CreateBook />} />
-            <Route path='/books/details/:id' element={<ShowBook />} />
-            <Route path='/books/edit/:id' element={<EditBook />} />
-            <Route path='/books/delete/:id' element={<DeleteBook />} />
-        </Routes>
+        <>
+            <div className="dark:bg-slate-900 dark:text-white">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route
+                        path="/course"
+                        element={
+                            authUser ? <Courses /> : <Navigate to="/signup" />
+                        }
+                    />
+                    <Route path="/signup" element={<Signup />} />
+                </Routes>
+                <Toaster />
+            </div>
+        </>
     );
-};
+}
 
 export default App;
