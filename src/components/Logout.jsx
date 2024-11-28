@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../context/AuthProvider";
+import { useAuth } from "../Context/AuthProvider";
 import toast from "react-hot-toast";
 
 function Logout() {
@@ -15,7 +15,7 @@ function Logout() {
 
             setTimeout(() => {
                 window.location.reload();
-            }, 3000);
+            }, 1000);
         } catch (error) {
             toast.error("Error: " + error);
             setTimeout(() => {}, 2000);

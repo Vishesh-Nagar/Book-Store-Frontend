@@ -21,7 +21,7 @@ function Signup() {
             password: data.password,
         };
         await axios
-            .post("http://localhost:4001/user/signup", userInfo)
+            .post("https://book-store-backend-6f44.onrender.com/user/signup", userInfo)
             .then((res) => {
                 console.log(res.data);
                 if (res.data) {
@@ -43,7 +43,6 @@ function Signup() {
                 <div className=" w-[400px] ">
                     <div className="modal-box">
                         <form onSubmit={handleSubmit(onSubmit)} method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
                             <Link
                                 to="/"
                                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
@@ -72,7 +71,7 @@ function Signup() {
                                     </span>
                                 )}
                             </div>
-                            {/* Email */}
+
                             <div className="mt-4 space-y-2">
                                 <span>Email</span>
                                 <br />
@@ -89,7 +88,7 @@ function Signup() {
                                     </span>
                                 )}
                             </div>
-                            {/* Password */}
+
                             <div className="mt-4 space-y-2">
                                 <span>Password</span>
                                 <br />
@@ -108,7 +107,7 @@ function Signup() {
                                     </span>
                                 )}
                             </div>
-                            {/* Button */}
+
                             <div className="flex justify-around mt-4">
                                 <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
                                     Signup

@@ -17,8 +17,12 @@ function Login() {
             email: data.email,
             password: data.password,
         };
+
+        const deployedBackendURL =
+            "https://book-store-backend-6f44.onrender.com/user/login";
+
         await axios
-            .post("http://localhost:4001/user/login", userInfo)
+            .post(deployedBackendURL, userInfo)
             .then((res) => {
                 console.log(res.data);
                 if (res.data) {
@@ -59,7 +63,6 @@ function Login() {
 
                         <h3 className="font-bold text-lg text-center">Login</h3>
 
-                        {/* Email */}
                         <div className="mt-4 space-y-2 flex flex-col items-center">
                             <input
                                 type="email"
@@ -74,7 +77,6 @@ function Login() {
                             )}
                         </div>
 
-                        {/* Password */}
                         <div className="mt-4 space-y-2 flex flex-col items-center">
                             <div className="relative w-80">
                                 <input
@@ -99,7 +101,6 @@ function Login() {
                             )}
                         </div>
 
-                        {/* Button */}
                         <div className="flex flex-col items-center mt-6">
                             <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
                                 Login
