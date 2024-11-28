@@ -5,7 +5,7 @@ import Courses from "./Courses/Courses";
 import Signup from "./components/Signup";
 import About from "./components/About";
 import { Toaster } from "react-hot-toast";
-import { useAuth } from "./Context/AuthProvider";
+import { useAuth } from "./context/AuthProvider";
 
 function App() {
     const [authUser, setAuthUser] = useAuth();
