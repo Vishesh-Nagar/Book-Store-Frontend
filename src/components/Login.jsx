@@ -24,7 +24,6 @@ function Login() {
         await axios
             .post(deployedBackendURL, userInfo)
             .then((res) => {
-                console.log(res.data);
                 if (res.data) {
                     toast.success("Logged in Successfully");
                     document.getElementById("my_modal_3").close();
