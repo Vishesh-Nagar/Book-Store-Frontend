@@ -4,6 +4,7 @@ import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+
 function Signup() {
     const location = useLocation();
     const navigate = useNavigate();
@@ -23,7 +24,6 @@ function Signup() {
         await axios
             .post("https://book-store-backend-6f44.onrender.com/user/signup", userInfo)
             .then((res) => {
-                console.log(res.data);
                 if (res.data) {
                     toast.success("Signup Successfully");
                     navigate(from, { replace: true });
